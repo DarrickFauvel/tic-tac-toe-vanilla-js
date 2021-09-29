@@ -6,10 +6,10 @@ export default class GameView {
               <h1>Tic Tac Toe</h1>
           </header>
 
-            <div class="header">
-                <div class="header__turn"></div>
-                <div class="header__status"></div>
-                <button type="button" class="header__restart" data-tooltip="Refresh">
+            <div class="board-header">
+                <div class="board-header__turn"></div>
+                <div class="board-header__status"></div>
+                <button type="button" class="board-header__restart" data-tooltip="Refresh">
                     <i class="material-icons">refresh</i>
                 </button>
             </div>
@@ -38,7 +38,7 @@ export default class GameView {
       })
     })
 
-    this.root.querySelector('.header__restart').addEventListener('click', () => {
+    this.root.querySelector('.board-header__restart').addEventListener('click', () => {
       if (this.onRestartClick) {
         this.onRestartClick()
       }
@@ -52,7 +52,7 @@ export default class GameView {
   }
 
   updateTurn(game) {
-    this.root.querySelector('.header__turn').textContent = `${game.turn}'s turn`
+    this.root.querySelector('.board-header__turn').textContent = `${game.turn}'s turn`
   }
 
   updateStatus(game) {
@@ -60,12 +60,12 @@ export default class GameView {
 
     if (game.findWinningCombination()) {
       status = `${game.turn} is the Winner!`
-      this.root.querySelector('.header__turn').textContent = ''
+      this.root.querySelector('.board-header__turn').textContent = ''
     } else if (!game.isInProgress()) {
       status = "It's a tie!"
     }
 
-    this.root.querySelector('.header__status').textContent = status
+    this.root.querySelector('.board-header__status').textContent = status
   }
 
   updateBoard(game) {

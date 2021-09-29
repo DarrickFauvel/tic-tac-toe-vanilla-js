@@ -39,7 +39,7 @@ header {
 }
 
 /* Header */
-.header {
+.board-header {
   border-radius: 5px 5px 0 0;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -47,23 +47,23 @@ header {
   padding: 0.5rem 1rem;
 }
 
-.header > * {
+.board-header > * {
   color: white;
 }
 
-.header__turn {
+.board-header__turn {
   justify-self: left;
   align-self: center;
 }
 
-.header__status {
+.board-header__status {
   /* flex-grow: 1; */
   /* text-align: center; */
   justify-self: center;
   align-self: center;
 }
 
-.header__restart {
+.board-header__restart {
   justify-self: right;
   align-self: center;
   border: none;
