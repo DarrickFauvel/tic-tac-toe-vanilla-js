@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Varela+Round&display=swap');
+
+:root {
+  --color-charcoal: #264653;
+  --color-persiangreen: #2a9d8f;
+  --color-orangeyellowcrayola: #e9c46a;
+  --color-sandybrown: #f4a261;
+  --color-burntsienna: #e76f51;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#app {
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25); */
+  width: 500px;
+  height: 500px;
+  font-family: sans-serif;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  /* overflow: hidden; */
+}
+
+/* Header */
+.header {
+  border-radius: 5px 5px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  background: var(--color-charcoal);
+  padding: 0.5rem 1rem;
+}
+
+.header > * {
+  color: white;
+}
+
+.header__turn {
+  justify-self: left;
+  align-self: center;
+}
+
+.header__status {
+  /* flex-grow: 1; */
+  /* text-align: center; */
+  justify-self: center;
+  align-self: center;
+}
+
+.header__restart {
+  justify-self: right;
+  align-self: center;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Board */
+.board {
+  display: grid;
+  background: var(--color-orangeyellowcrayola);
+  gap: 10px;
+  padding: 10px;
+  flex-grow: 1;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border-radius: 0 0 5px 5px;
+}
+
+.board__tile {
+  background: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7rem;
+  font-family: 'Varela Round', sans-serif;
+  color: var(--color-charcoal);
+  transition: all 500ms ease;
+}
+
+.board__tile:hover {
+  background: #eeeeee;
+}
+
+.board__tile--winner {
+  color: var(--color-burntsienna);
+  transform: rotateY(180deg);
+}
+
+/* Tooltip */
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+[data-tooltip]::after {
+  position: absolute;
+  width: 5rem;
+  left: calc(50% - 2.5rem);
+  bottom: 120%;
+  text-align: center;
+  box-sizing: border-box;
+  content: attr(data-tooltip);
+  color: white;
+  background-color: var(--color-sandybrown);
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.7s, transform 0.2s;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
