@@ -1,27 +1,30 @@
 export default class GameView {
   constructor(root) {
     this.root = root
-    this.root.innerHTML = /*html*/ `       
-          <div class="header">
-              <div class="header__turn"></div>
-              <div class="header__status"></div>
-              <button type="button" class="header__restart" data-tooltip="Refresh">
-                  <i class="material-icons">refresh</i>
-              </button>
-          </div>
+    this.root.innerHTML = /*html*/ `
+          <header>
+              <h1>Tic Tac Toe</h1>
+          </header>
 
-          <div class="board">
-              <div class="board__tile" data-index="0"></div>
-              <div class="board__tile" data-index="1"></div>
-              <div class="board__tile" data-index="2"></div>
-              <div class="board__tile" data-index="3"></div>
-              <div class="board__tile" data-index="4"></div>
-              <div class="board__tile" data-index="5"></div>
-              <div class="board__tile" data-index="6"></div>
-              <div class="board__tile" data-index="7"></div>
-              <div class="board__tile" data-index="8"></div>
-          </div>
-        </div>   
+            <div class="header">
+                <div class="header__turn"></div>
+                <div class="header__status"></div>
+                <button type="button" class="header__restart" data-tooltip="Refresh">
+                    <i class="material-icons">refresh</i>
+                </button>
+            </div>
+
+            <div class="board">
+                <div class="board__tile" data-index="0"></div>
+                <div class="board__tile" data-index="1"></div>
+                <div class="board__tile" data-index="2"></div>
+                <div class="board__tile" data-index="3"></div>
+                <div class="board__tile" data-index="4"></div>
+                <div class="board__tile" data-index="5"></div>
+                <div class="board__tile" data-index="6"></div>
+                <div class="board__tile" data-index="7"></div>
+                <div class="board__tile" data-index="8"></div>
+            </div>
       `
 
     this.onTileClick = undefined
@@ -49,14 +52,14 @@ export default class GameView {
   }
 
   updateTurn(game) {
-    this.root.querySelector('.header__turn').textContent = `Player ${game.turn}'s turn`
+    this.root.querySelector('.header__turn').textContent = `${game.turn}'s turn`
   }
 
   updateStatus(game) {
     let status = 'In Progress'
 
     if (game.findWinningCombination()) {
-      status = `🥳 Player ${game.turn} is the Winner! 🎉`
+      status = `${game.turn} is the Winner!`
       this.root.querySelector('.header__turn').textContent = ''
     } else if (!game.isInProgress()) {
       status = "It's a tie!"
